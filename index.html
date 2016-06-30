@@ -1,12 +1,19 @@
 <meta charset=utf-8>
 <script>
 
-    var shoot = parseInt(prompt("Введите число"));
+    var n = 0;
     
-    if (isNaN(shoot)) {
-        alert("Данная программа принимает только числа, поажлуйста, введите число");
-    } else if (shoot >= 10 && shoot <= 32 || shoot >= 45 && shoot <= 58) {
-        alert("Поздравляем, цель поражена!")
-    }
+    do {
+        
+        if((Math.random() * 6) < 1) {
+            alert("Проиграл!");
+            break;
+        }
+        n++;
+        var run = prompt("Если хотите прекратить игру нажмите отмена или просто ничего не вводите!");
+        
+    } while (run);
 
+alert("Раундов сыграно: " + n);
+    
 </script>
