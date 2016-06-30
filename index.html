@@ -1,35 +1,12 @@
 <meta charset=utf-8>
 <script>
 
-    var correct = 0; // переменная для подсчета правильных ответов
-    var answer1 = "2";
-    var answer2 = "4";
-    var answer3 = "8";
+    var shoot = parseInt(prompt("Введите число"));
     
-    var quest1 = prompt("Сколько будет 1*2 ?");
-    if(quest1 == answer1) {
-        correct++;
-        alert("Верно!")
-    } else {
-        alert("Неверно!")
+    if (isNaN(shoot)) {
+        alert("Данная программа принимает только числа, поажлуйста, введите число");
+    } else if (shoot >= 10 && shoot <= 32 || shoot >= 45 && shoot <= 58) {
+        alert("Поздравляем, цель поражена!")
     }
-    
-    var quest2 = prompt("Сколько будет 2*2 ?");
-    if(quest2 == answer2) {
-        correct++;
-        alert("Верно!")
-    } else {
-        alert("Неверно!")
-    }
-    
-    var quest3 = prompt("Сколько будет 4*2 ?");
-    if(quest3 == answer3) {
-        correct++;
-        alert("Верно!")
-    } else {
-        alert("Неверно!")
-    }
-            
-    alert("Было задано 3 загадки, из них правильно угадано: " + correct);
 
 </script>
