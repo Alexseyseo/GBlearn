@@ -1,9 +1,35 @@
 <meta charset=utf-8>
 <script>
 
-    var number1 = parseInt(prompt("Выполняется операция сложения<br>Введите первое число"));
-    var number2 = parseInt(prompt("Введите второе число"));
+    var correct = 0; // переменная для подсчета правильных ответов
+    var answer1 = "2";
+    var answer2 = "4";
+    var answer3 = "8";
     
-    alert("Выполнена операция сложения, результат: " + (number1+number2));
+    var quest1 = prompt("Сколько будет 1*2 ?");
+    if(quest1 == answer1) {
+        correct++;
+        alert("Верно!")
+    } else {
+        alert("Неверно!")
+    }
+    
+    var quest2 = prompt("Сколько будет 2*2 ?");
+    if(quest2 == answer2) {
+        correct++;
+        alert("Верно!")
+    } else {
+        alert("Неверно!")
+    }
+    
+    var quest3 = prompt("Сколько будет 4*2 ?");
+    if(quest3 == answer3) {
+        correct++;
+        alert("Верно!")
+    } else {
+        alert("Неверно!")
+    }
+            
+    alert("Было задано 3 загадки, из них правильно угадано: " + correct);
 
 </script>
