@@ -1,21 +1,34 @@
 <meta charset=utf-8>
 <script>
 
-    var deposit = parseInt(prompt("Введите сумму вклада"));
-    var pct = parseInt(prompt("Введите процент вклада"));
-    var time = parseInt(prompt("Введите срок вклада"));
-    var i;
-    var sum;
+    var rounds = 1000000;
+    var arr = [];
+    var zer = 0;
+    var zerMax = 0;
+    var i = 0; var n = 0;
     
-    for(i=1;i<=time;i++) {
-        
-        deposit = Math.round(deposit + (deposit / 100 * pct));
-        alert ("После " + i + " месяца, ваш вклад будет равен: " + deposit);
-        if(i == time) {
-            alert("После окончания срока вашего вклада, ваша сумма будет равна: " + deposit + " рублей.");
+    
+    for (i=0;i<rounds;i++) {
+        n = (Math.round(Math.random()*36));
+        if (n != 0) {
+            n = (n % 2) * 2 - 1;
         }
-        
+        arr.push(n);
     }
     
+    alert(arr); // проверяем что массив заполнился
+    
+    for (i=0;i<arr.length;i++) {
+        if (arr[i] == 1) {
+            zer++;
+            if(zerMax < zer) {
+                zerMax = zer;
+            }
+        } else {
+            zer = 0;
+        }
+    }
+    
+    alert ("Красное максимум повторялось " + zerMax + " раз.");
     
 </script>
