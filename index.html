@@ -1,19 +1,21 @@
 <meta charset=utf-8>
 <script>
 
-    var n = 0;
+    var deposit = parseInt(prompt("Введите сумму вклада"));
+    var pct = parseInt(prompt("Введите процент вклада"));
+    var time = parseInt(prompt("Введите срок вклада"));
+    var i;
+    var sum;
     
-    do {
+    for(i=1;i<=time;i++) {
         
-        if((Math.random() * 6) < 1) {
-            alert("Проиграл!");
-            break;
+        deposit = Math.round(deposit + (deposit / 100 * pct));
+        alert ("После " + i + " месяца, ваш вклад будет равен: " + deposit);
+        if(i == time) {
+            alert("После окончания срока вашего вклада, ваша сумма будет равна: " + deposit + " рублей.");
         }
-        n++;
-        var run = prompt("Если хотите прекратить игру нажмите отмена или просто ничего не вводите!");
         
-    } while (run);
-
-alert("Раундов сыграно: " + n);
+    }
+    
     
 </script>
