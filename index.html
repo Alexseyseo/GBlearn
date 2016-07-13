@@ -34,24 +34,48 @@
 
     var dealer = [getCard()];
     var player = [getCard(), getCard()];
-    var answer = '';
     
-    do {
-        if (getSum(player) > 21) { // пишем условие проигрыша
-            alert(getStatus() + " У вас перебор, вы проиграли.");
-            break;
-        } else if (getSum(player) == 21) { // если сразу выпало 21 очко
-            alert(getStatus() + 'Блэкджек, поздравляем, Вы выиграли!');
-            break;
-        }
-        
-        answer = prompt(getStatus() + ' Хотите еще одну карту? 1 - да, иначе - нет'); // задаем вопрос
-        
-        if (answer == '1') { // игрок берет еще одну карту, цикл повторяется
-            player.push(getCard());
-        } else { // игрок отказывается от карты, игра закончена
-            alert(getStatus() + ' Игра закончена!');
-        }
-    } while(answer == '1');
+    if (getSum(player) == 21) {
+        alert("Black Jack на раздаче, поздравляем с победой!");
+    } else {
+        var answer = '';
+        do {
+            answer = prompt(getStatus() + ' Хотите еще одну карту? 1 - да, иначе - нет'); // задаем вопрос
+            
+            if (answer == '1') { // игрок берет еще одну карту, цикл повторяется
+                player.push(getCard());
+                
+                sum = getSum(player); 
+                if (sum > 21) { // пишем условие проигрыша
+                    alert(getStatus() + " У вас перебор, вы проиграли.");
+                    break;
+                } else if (sum == 21) { // если сразу выпало 21 очко
+                    alert(getStatus() + 'Блэкджек, поздравляем, Вы выиграли!');
+                    break;
+                }
+            } else { // игрок закончил брать карты, теперь вступает диллер
+                while(getSum(dealer) < 17) {
+                    dealer.push(getCard());
+                }
+                
+                var sumDealer = getSum(dealer);
+                var sumPlayer = getSum(player);
+                
+                if (sumDealer == 21) {
+                    alert('У дилера Black jack ' + getStatus());
+                } else if (sumDealer > 21) {
+                    alert('У дилера перебор, с победой! ' + getStatus());
+                } else if (sumDealer == sumPlayer) {
+                    alert('Ничья! ' + getStatus());
+                } else if (sumPlayer > sumDealer) {
+                    alert('Победа! ' + getStatus());
+                } else {
+                    alert('Проигрыш! ' + getStatus());
+                }
+            }
+        } while(answer == '1');
+    }
+    
+
     
 </script>
