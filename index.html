@@ -4,33 +4,54 @@
     function getRandomInt(min,max) {
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
-    
     function getCard() {
         var cards = ['6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
         return cards[getRandomInt(0, cards.length - 1)];
     }
-    
     function getSum(arr) {
         var sum = 0;
-        for(i=0;i<arr.length;i++) {
+        for(i=0;i<arr.length;i++) { // Считаем все карты кроме тузов
             if(arr[i] <= 10 && arr[i] >= 6) {
                 sum = sum + parseInt(arr[i]);
-            } else if(arr[i] == 'J'){
-                sum = sum + 2;
-            } else if(arr[i] == 'Q'){
-                sum = sum + 3;
-            } else if(arr[i] == 'K'){
-                sum = sum + 4;
-            } else if(arr[i] == 'A'){
-                sum = sum + 11;
+            } else if(arr[i] == 'J' || arr[i] == 'Q' || arr[i] == 'K'){
+                sum = sum + 10;
+            }
+        }
+        for (i=0;i<arr.length;i++) { // подсчет тузов
+             if(arr[i] == 'A'){
+                 if (sum <= 10) {
+                    sum = sum + 11;
+                 } else {
+                     sum = sum + 1;
+                 }
             }
         }
         return sum;
     }
+    function getStatus() {
+        return 'Диллер: ' + dealer.join(' ') + ' Игрок: ' + player.join(' ');
+    }
 
     var dealer = [getCard()];
     var player = [getCard(), getCard()];
+    var answer = '';
     
-    alert('Диллер: ' + dealer.join(' ') + ' Игрок: ' + player.join(' '));
-    alert('Текущая сумма карт у игрока: ' + getSum(player));
+    do {
+        if (getSum(player) > 21) { // пишем условие проигрыша
+            alert(getStatus() + " У вас перебор, вы проиграли.");
+            break;
+        } else if (getSum(player) == 21) { // если сразу выпало 21 очко
+            alert(getStatus() + 'Блэкджек, поздравляем, Вы выиграли!');
+            break;
+        }
+        
+        answer = prompt(getStatus() + ' Хотите еще одну карту? 1 - да, иначе - нет'); // задаем вопрос
+        
+        if (answer == '1') { // игрок берет еще одну карту, цикл повторяется
+            player.push(getCard());
+        } else { // игрок отказывается от карты, игра закончена
+            alert(getStatus() + ' Игра закончена!');
+        }
+    } while(answer == '1');
+    
 </script>
