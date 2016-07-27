@@ -1,0 +1,25 @@
+<meta charset="utf-8">
+<title>Первое альтернативное домашнее задание</title>
+<script>
+    //Напишите функцию для создания таблицы размером NхM
+    function onTable(line, column) {
+        document.write("<table border=1>");
+        for (i=0;i<=line;i++) {
+            //вводим новую строку
+            document.write("<tr>");
+            
+            for (k=0;k<=column;k++) {
+                document.write("<td>1");
+                
+                document.write("</td>");
+            }
+            
+            document.write("</tr>");
+        }
+        document.write("</table>");
+    }
+    var line = parseInt(prompt("Укажите количество строк в цифрах:"));
+    var column = parseInt(prompt("Укажите количество столбцов в цифрах:"));
+    
+    onTable(line, column);
+</script>
