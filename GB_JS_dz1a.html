@@ -1,25 +1,34 @@
 <meta charset="utf-8">
 <title>Первое альтернативное домашнее задание</title>
 <script>
-    //Напишите функцию для создания таблицы размером NхM
-    function onTable(line, column) {
+
+    function cRand() {// Функция для получения рандомного цвета
+        var r=Math.floor(Math.random() * (256));
+        var g=Math.floor(Math.random() * (256));
+        var b=Math.floor(Math.random() * (256));
+        var color='#' + r.toString(16) + g.toString(16) + b.toString(16);
+        return color;
+    }
+    function onTable(line, column) {// функция создает таблицу размером NxM
+        var chars = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+        var rNum = Math.floor(Math.random() * chars.length);
         document.write("<table border=1>");
-        for (i=0;i<=line;i++) {
-            //вводим новую строку
-            document.write("<tr>");
+        
+        for (i=1;i<=line;i++) {
+            document.write("<tr>"); //вводим новую строку
             
-            for (k=0;k<=column;k++) {
-                document.write("<td>1");
-                
+            for (k=1;k<=column;k++) { // цикл добавляет столбец, также задается цвет фона каждому элементу и добавляется рандомная буква из заданного цикла
+                document.write("<td style=\"background:" + cRand() + "\">");
+                document.write(chars.substring(rNum,rNum+1));
                 document.write("</td>");
-            }
+            } 
             
             document.write("</tr>");
         }
         document.write("</table>");
     }
+    
     var line = parseInt(prompt("Укажите количество строк в цифрах:"));
     var column = parseInt(prompt("Укажите количество столбцов в цифрах:"));
-    
     onTable(line, column);
 </script>
